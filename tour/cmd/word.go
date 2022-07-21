@@ -1,10 +1,11 @@
 package cmd
 
 import (
-	w "github.com/go-tour/tour/internal/word"
-	"github.com/spf13/cobra"
 	"log"
 	"strings"
+
+	w "github.com/go-tour/tour/internal/word"
+	"github.com/spf13/cobra"
 )
 
 const (
