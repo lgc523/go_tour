@@ -16,4 +16,5 @@ func init() {
 	rootCmd.AddCommand(wordCmd)
 	rootCmd.AddCommand(timeCmd)
 	rootCmd.AddCommand(timeStampCmd)
+	rootCmd.AddCommand(sqlCmd)
 }

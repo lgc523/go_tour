@@ -1,0 +1,27 @@
+Server:
+  RunMode: debug
+  HttpPort: 5023
+  ReadTimeOut: 3
+  WriteTimeOut: 5
+
+APP:
+  AppName: blog_gin
+  DefaultPageSize: 10
+  MaxPageSize: 100
+  LogSavePath: storage/logs
+  LogFileName: app
+  LogFileExt: .log
+  LogPrefix: blog_log
+
+Database:
+  DBType: mysql
+  UserName: spider
+  Passwd: ''
+  Host: c1:5555
+  DBName: dev_go
+  ConTimeOut: 2s
+  TablePrefix: blog
+  Charset: utf8mb4
+  ParseTime: true
+  MaxIdleCons: 10
+  MaxOpenCons: 30
