@@ -61,8 +61,8 @@ type ArticleRow struct {
 }
 
 func (a Article) ListByTagID(db *gorm.DB, tagID uint32, pageOffSet, pageSize int) ([]*ArticleRow, error) {
-	fields := []string{"ar.is AS article_id", "ar_title AS article_title", "ar.desc AS article_desc", "ar.cover.image.url", "ar.content"}
-	fields = append(fields, []string{"t,id AS tag_id", "t.name AS tag_name"}...)
+	fields := []string{"ar.id AS article_id", "ar.title AS article_title", "ar.desc AS article_desc", "ar.cover_image_url", "ar.content"}
+	fields = append(fields, []string{"t.id AS tag_id", "t.name AS tag_name"}...)
 	if pageOffSet >= 0 && pageSize > 0 {
 		db = db.Offset(pageOffSet).Limit(pageSize)
 	}

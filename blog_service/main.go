@@ -37,7 +37,7 @@ func main() {
 		Handler:        router,
 		ReadTimeout:    global.ServerSetting.ReadTimeOut * time.Second,
 		WriteTimeout:   global.ServerSetting.WriteTimeOut * time.Second,
-		MaxHeaderBytes: 1 << 20,
+		MaxHeaderBytes: 2 << 20,
 	}
 	global.Logger.InfoF("[bolg_service server start over, listened on port %s...]", global.ServerSetting.HttpPort)
 	err := server.ListenAndServe()
@@ -77,11 +77,14 @@ func setupDBEngine() error {
 }
 
 func setUpLogger() error {
-	global.Logger = logger.NewLogger(&lumberjack.Logger{
-		Filename:  global.AppSetting.LogSavePath + "/" + global.AppSetting.LogFileName + global.AppSetting.LogFileExt,
-		MaxSize:   523,
-		MaxAge:    15,
-		LocalTime: true,
-	}, global.AppSetting.LogPrefix, log.LstdFlags).WithCaller(2)
+	global.Logger = logger.NewLogger(
+		&lumberjack.Logger{
+			Filename:  global.AppSetting.LogSavePath + "/" + global.AppSetting.LogFileName + global.AppSetting.LogFileExt,
+			MaxSize:   523,
+			MaxAge:    15,
+			LocalTime: true,
+		},
+		global.AppSetting.LogPrefix,
+		log.LstdFlags).WithCaller(2)
 	return nil
 }

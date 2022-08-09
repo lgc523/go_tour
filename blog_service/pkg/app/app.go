@@ -26,6 +26,10 @@ func NewResp(ctx *gin.Context) *Resp {
 	return &Resp{ctx}
 }
 
+func (r *Resp) Done() {
+	r.Ctx.JSON(http.StatusOK, &RespTemplate{Code: 200, Data: nil, Msg: "success"})
+}
+
 func (r *Resp) Success(data any) {
 	r.Ctx.JSON(http.StatusOK, &RespTemplate{Code: 200, Data: data, Msg: "success"})
 }

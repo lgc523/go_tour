@@ -16,7 +16,7 @@ APP:
 Database:
   DBType: mysql
   UserName: spider
-  Passwd: ''
+  Passwd: 'MYSQL@5.7.38$com!'
   Host: c1:5555
   DBName: dev_go
   ConTimeOut: 2s
