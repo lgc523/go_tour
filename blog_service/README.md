@@ -17,4 +17,7 @@ go get -u gopkg.in/natefinch/lumberjack.v2
 
 6.playground
 go get -u github.com/go-playground/validator/v10
+
+7.jwt
+go get -u github.com/dgrijalva/jwt-go@v3.2.0
 ```

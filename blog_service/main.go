@@ -64,6 +64,12 @@ func setupSetting() error {
 	if err != nil {
 		return err
 	}
+
+	err = vpSet.ReadSection("JWT", &global.JWTSetting)
+	if err != nil {
+		return err
+	}
+	global.JWTSetting.Expire *= time.Second
 	return nil
 }
 

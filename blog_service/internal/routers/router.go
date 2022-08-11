@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	global "github.com/go-tour/blog_service/global"
 	"github.com/go-tour/blog_service/internal/middleware"
+	"github.com/go-tour/blog_service/internal/routers/api"
 	v1 "github.com/go-tour/blog_service/internal/routers/api/v1"
 	"net/http"
 )
@@ -17,13 +18,18 @@ func NewRouter() *gin.Engine {
 
 	article := v1.NewArticle()
 	tag := v1.NewTag()
-	upload := NewUpload()
+	upload := api.NewUpload()
+	auth := api.NewAuth()
 
 	//file api
 	e.POST("/upload/file", upload.UploadFile)
 	e.StaticFS("/static", http.Dir(global.AppSetting.UploadSavePath))
 
+	//jwt
+	e.GET("/auth", auth.GetAuth)
+
 	apiV1 := e.Group("/api/v1")
+	apiV1.Use(middleware.JWT())
 	{
 		apiV1.POST("/tags", tag.Create)
 		apiV1.DELETE("/tags/:id", tag.Delete)
