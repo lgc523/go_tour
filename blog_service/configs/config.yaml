@@ -32,3 +32,8 @@ Database:
   ParseTime: true
   MaxIdleCons: 10
   MaxOpenCons: 30
+
+JWT:
+  Secret: spider
+  Issuer: go-tour
+  Expire: 7200

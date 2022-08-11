@@ -52,3 +52,12 @@ CREATE TABLE `blog_article` (
                                 `state` tinyint(3) unsigned DEFAULT '1' COMMENT '状态 0为禁用、1为启用',
                                 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文章管理';
+
+create table blog_auth
+(
+    id         int(10) unsigned not null auto_increment,
+    app_key    varchar(20) default '' comment 'key',
+    app_secret varchar(50) default '' comment 'secret',
+    primary key (id) using btree
+) engine = innodb
+  default charset = utf8mb4 comment '认证管理';
