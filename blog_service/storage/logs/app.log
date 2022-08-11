@@ -226,3 +226,8 @@ blog_log2022/08/09 21:44:33 {"callers":["/Users/lgc/code/go/go_tour/blog_service
 blog_log2022/08/09 21:44:33 {"callers":["/Users/lgc/code/go/go_tour/blog_service/main.go; 25 main.init.0"],"level":"info","msg":"[bolg_service server start over, listened on port 5023...]","time":1660052673958199000}
 blog_log2022/08/09 21:49:38 {"callers":["/Users/lgc/code/go/go_tour/blog_service/main.go; 25 main.init.0"],"level":"info","msg":"[bolg_service server starting...]","time":1660052978401846000}
 blog_log2022/08/09 21:49:38 {"callers":["/Users/lgc/code/go/go_tour/blog_service/main.go; 25 main.init.0"],"level":"info","msg":"[bolg_service server start over, listened on port 5023...]","time":1660052978404136000}
+blog_log2022/08/11 22:23:41 {"callers":["/Users/lgc/code/go/go_tour/blog_service/main.go; 25 main.init.0"],"level":"info","msg":"[bolg_service server starting...]","time":1660227821302203000}
+blog_log2022/08/11 22:23:41 {"callers":["/Users/lgc/code/go/go_tour/blog_service/main.go; 25 main.init.0"],"level":"info","msg":"[bolg_service server start over, listened on port 5023...]","time":1660227821304060000}
+blog_log2022/08/11 22:27:02 {"callers":["/Users/lgc/code/go/go_tour/blog_service/main.go; 25 main.init.0"],"level":"error","msg":"svc.uploadFile err: file suffix is not supported.","time":1660228022241882000}
+blog_log2022/08/11 22:32:42 {"callers":["/Users/lgc/code/go/go_tour/blog_service/main.go; 25 main.init.0"],"level":"info","msg":"[bolg_service server starting...]","time":1660228362789371000}
+blog_log2022/08/11 22:32:42 {"callers":["/Users/lgc/code/go/go_tour/blog_service/main.go; 25 main.init.0"],"level":"info","msg":"[bolg_service server start over, listened on port 5023...]","time":1660228362790396000}

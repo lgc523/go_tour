@@ -12,6 +12,13 @@ APP:
   LogFileName: app
   LogFileExt: .log
   LogPrefix: blog_log
+  UploadSavePath: storage/uploads
+  UploadServerUrl: http://127.0.0.1:5023/static
+  UploadImageMaxSize: 5 #MB
+  UploadImageAllowExts:
+    - .jpg
+    - .jpeg
+    - .png
 
 Database:
   DBType: mysql

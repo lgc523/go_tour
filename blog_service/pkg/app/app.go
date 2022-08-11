@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-tour/blog_service/pkg/errcode"
 	"net/http"
+	"strings"
 )
 
 type Resp struct {
@@ -44,14 +45,17 @@ func (r *Resp) SuccessPage(list any, totalSize int) {
 		}}, Msg: "success"})
 }
 
-func (r *Resp) FailResp(err *errcode.Error) {
+func (r *Resp) ErrResp(err *errcode.Error) {
 	template := RespTemplate{
 		Code: err.StatusCode(),
 		Msg:  err.Msg()}
+	if len(err.Details()) > 0 {
+		template.Msg = strings.Join(append(err.Details(), template.Msg), ",")
+	}
 	r.Ctx.JSON(err.StatusCode(), template)
 }
 
-func (r *Resp) FailRespWithExtraMsg(err *errcode.Error, msg string) {
+func (r *Resp) ErrRespWithExtraMsg(err *errcode.Error, msg string) {
 	template := RespTemplate{
 		Code: err.StatusCode(),
 		Msg:  err.Msg()}
