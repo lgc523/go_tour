@@ -22,14 +22,14 @@ func (a Article) Get(c *gin.Context) {
 
 	inValid, errs := app.BindAndValid(c, &req)
 	if inValid {
-		global.Logger.ErrorF("[article.Get.BindValid err %v]", errs)
+		global.Logger.ErrorF(c, "[article.Get.BindValid err %v]", errs)
 		resp.ErrRespWithExtraMsg(errcode.InvalidParam, errs.Error())
 		return
 	}
 	svc := services.New(c.Request.Context())
 	article, err := svc.GetArticle(&req)
 	if err != nil {
-		global.Logger.ErrorF("GetArticle err: %s", err.Error())
+		global.Logger.ErrorF(c, "GetArticle err: %s", err.Error())
 		resp.ErrRespWithExtraMsg(errcode.ErrGetArticle, errs.Error())
 		return
 	}
@@ -45,8 +45,8 @@ func (a Article) List(c *gin.Context) {
 	resp := app.NewResp(c)
 	inValid, errs := app.BindAndValid(c, &req)
 	if inValid {
-		global.Logger.ErrorF("[article.List.BindValid err: %s]", errs.Error())
-		resp.ErrRespWithExtraMsg(errcode.InvalidParam, errs.Error())
+		global.Logger.ErrorF(c, "[article.List.BindValid err: %s]", errs.Error())
+		resp.ErrResp(errcode.InvalidParam.WithDetails(errs.Error()))
 		return
 	}
 
@@ -54,7 +54,7 @@ func (a Article) List(c *gin.Context) {
 	pager := app.Pager{PageNo: app.GetPage(c), PageSize: app.GetPageSize(c)}
 	articleList, count, err := svc.GetArticleList(&req, &pager)
 	if err != nil {
-		global.Logger.ErrorF("getArticleList err: %s", err.Error())
+		global.Logger.ErrorF(c, "getArticleList err: %s", err.Error())
 		resp.ErrRespWithExtraMsg(errcode.ErrGetArticles, err.Error())
 		return
 	}
@@ -69,14 +69,14 @@ func (a Article) Create(c *gin.Context) {
 	resp := app.NewResp(c)
 	inValid, errs := app.BindAndValid(c, &req)
 	if inValid {
-		global.Logger.ErrorF("[article.Create.BindValid err: %s]", errs.Error())
+		global.Logger.ErrorF(c, "[article.Create.BindValid err: %s]", errs.Error())
 		resp.ErrRespWithExtraMsg(errcode.InvalidParam, errs.Error())
 		return
 	}
 	svc := services.New(c.Request.Context())
 	err := svc.CreateArticle(&req)
 	if err != nil {
-		global.Logger.ErrorF("createArticle err: %s", err.Error())
+		global.Logger.ErrorF(c, "createArticle err: %s", err.Error())
 		resp.ErrRespWithExtraMsg(errcode.ErrCreateArticle, err.Error())
 		return
 	}
@@ -87,14 +87,14 @@ func (a Article) Update(c *gin.Context) {
 	resp := app.NewResp(c)
 	inValid, errs := app.BindAndValid(c, &req)
 	if inValid {
-		global.Logger.ErrorF("[article.Update.BindValid err: %s]", errs.Error())
+		global.Logger.ErrorF(c, "[article.Update.BindValid err: %s]", errs.Error())
 		resp.ErrRespWithExtraMsg(errcode.InvalidParam, errs.Error())
 		return
 	}
 	svc := services.New(c.Request.Context())
 	err := svc.UpdateArticle(&req)
 	if err != nil {
-		global.Logger.ErrorF("updateArticle err: %s", err.Error())
+		global.Logger.ErrorF(c, "updateArticle err: %s", err.Error())
 		resp.ErrRespWithExtraMsg(errcode.ErrUpdateArticle, err.Error())
 		return
 	}
@@ -105,14 +105,14 @@ func (a Article) Delete(c *gin.Context) {
 	resp := app.NewResp(c)
 	inValid, errs := app.BindAndValid(c, &req)
 	if inValid {
-		global.Logger.ErrorF("[article.Delete.BindValid err: %s]", errs.Error())
+		global.Logger.ErrorF(c, "[article.Delete.BindValid err: %s]", errs.Error())
 		resp.ErrRespWithExtraMsg(errcode.InvalidParam, errs.Error())
 		return
 	}
 	svc := services.New(c.Request.Context())
 	err := svc.DeleteArticle(&req)
 	if err != nil {
-		global.Logger.ErrorF("deleteArticle err: %s", err.Error())
+		global.Logger.ErrorF(c, "deleteArticle err: %s", err.Error())
 		resp.ErrRespWithExtraMsg(errcode.ErrDeleteArticle, err.Error())
 		return
 	}

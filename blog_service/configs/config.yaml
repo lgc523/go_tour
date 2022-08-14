@@ -1,5 +1,5 @@
 Server:
-  RunMode: debug
+  RunMode: release
   HttpPort: 5023
   ReadTimeOut: 3
   WriteTimeOut: 5
@@ -19,6 +19,7 @@ APP:
     - .jpg
     - .jpeg
     - .png
+  DefaultContextTimeout: 2
 
 Database:
   DBType: mysql
@@ -37,3 +38,21 @@ JWT:
   Secret: spider
   Issuer: go-tour
   Expire: 7200
+
+Email:
+  Host: smtp.126.com
+  Port: 465
+  UserName: lgc523@126.com
+  Password: IZLJEAVNWKBXXLXK
+  IsSSL: true
+  From: lgc523@126.com
+  To:
+    - spider.nns@gmail.com
+
+DingTalk:
+  Url: https://oapi.dingtalk.com/robot/send?access_token=
+  To:
+    #  prod
+    - 3261267c1b732e553908306695b7602dcd62180f6d3165b945509a29a825e979
+    #  dev
+    - 5b3c64935993c5048c57e1b02c0dcec0ae440ec00454145c3eb8cc02127f9556

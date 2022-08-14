@@ -24,7 +24,7 @@ type ArticleGetRequest struct {
 }
 
 type ArticleListRequest struct {
-	TagID uint32 `form:"tagId" binding:"gte=1"`
+	TagID uint32 `form:"tagId" binding:"required,gte=1"`
 	State uint8  `form:"state,default=1" binding:"oneof=0 1"`
 }
 

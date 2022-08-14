@@ -13,4 +13,6 @@ var (
 	DBEngine        *gorm.DB
 	Logger          *logger.Logger
 	JWTSetting      *setting.JWTSetting
+	EmailSetting    *setting.EmailSetting
+	DingTalkSetting *setting.DingTalkSetting
 )
