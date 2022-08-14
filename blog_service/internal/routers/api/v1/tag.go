@@ -22,7 +22,7 @@ func (t Tag) List(c *gin.Context) {
 
 	inValid, errs := app.BindAndValid(c, &req)
 	if inValid {
-		global.Logger.ErrorF("app.tag.List.BindAndValid errs: %v", errs)
+		global.Logger.ErrorF(c, "app.tag.List.BindAndValid errs: %v", errs)
 		resp.ErrRespWithExtraMsg(errcode.InvalidParam, errs.Error())
 		return
 	}
@@ -30,7 +30,7 @@ func (t Tag) List(c *gin.Context) {
 	svc := services.New(c.Request.Context())
 	tagCap, err := svc.CountTag(&services.CountTagReq{Name: req.Name, State: req.State})
 	if err != nil {
-		global.Logger.ErrorF("[svc.CountTag err: 5v]", err)
+		global.Logger.ErrorF(c, "[svc.CountTag err: 5v]", err)
 		resp.ErrRespWithExtraMsg(errcode.CountTagFail, err.Error())
 		return
 	}
@@ -38,7 +38,7 @@ func (t Tag) List(c *gin.Context) {
 	pager := app.Pager{PageNo: app.GetPage(c), PageSize: app.GetPageSize(c)}
 	tags, err := svc.GetTagList(&req, &pager)
 	if err != nil {
-		global.Logger.ErrorF("[svc.GetTagList err: 5v]", err)
+		global.Logger.ErrorF(c, "[svc.GetTagList err: 5v]", err)
 		resp.ErrRespWithExtraMsg(errcode.GetListFail, err.Error())
 		return
 	}
@@ -51,7 +51,7 @@ func (t Tag) Create(c *gin.Context) {
 
 	inValid, errs := app.BindAndValid(c, &req)
 	if inValid {
-		global.Logger.ErrorF("app.tag.Create.BindAndValid errs: %v", errs)
+		global.Logger.ErrorF(c, "app.tag.Create.BindAndValid errs: %v", errs)
 		resp.ErrRespWithExtraMsg(errcode.InvalidParam, errs.Error())
 		return
 	}
@@ -59,7 +59,7 @@ func (t Tag) Create(c *gin.Context) {
 	svc := services.New(c.Request.Context())
 	err := svc.CreateTag(&req)
 	if err != nil {
-		global.Logger.ErrorF("svc.tag.Create err: %v", err)
+		global.Logger.ErrorF(c, "svc.tag.Create err: %v", err)
 		resp.ErrResp(errcode.CreateTagFail)
 		return
 	}
@@ -74,7 +74,7 @@ func (t Tag) Update(c *gin.Context) {
 
 	inValid, errs := app.BindAndValid(c, &req)
 	if inValid {
-		global.Logger.ErrorF("app.tag.Update.BindAndValid errs: %v", errs)
+		global.Logger.ErrorF(c, "app.tag.Update.BindAndValid errs: %v", errs)
 		resp.ErrRespWithExtraMsg(errcode.InvalidParam, errs.Error())
 		return
 	}
@@ -82,7 +82,7 @@ func (t Tag) Update(c *gin.Context) {
 	svc := services.New(c.Request.Context())
 	err := svc.UpdateTag(&req)
 	if err != nil {
-		global.Logger.ErrorF("svc.tag.Update err: %v", err)
+		global.Logger.ErrorF(c, "svc.tag.Update err: %v", err)
 		resp.ErrResp(errcode.UpdateTagFail)
 		return
 	}
@@ -95,7 +95,7 @@ func (t Tag) Delete(c *gin.Context) {
 
 	inValid, errs := app.BindAndValid(c, &req)
 	if inValid {
-		global.Logger.ErrorF("app.tag.Delete.BindAndValid errs: %v", errs)
+		global.Logger.ErrorF(c, "app.tag.Delete.BindAndValid errs: %v", errs)
 		resp.ErrRespWithExtraMsg(errcode.InvalidParam, errs.Error())
 		return
 	}
@@ -103,7 +103,7 @@ func (t Tag) Delete(c *gin.Context) {
 	svc := services.New(c.Request.Context())
 	err := svc.DeleteTag(&req)
 	if err != nil {
-		global.Logger.ErrorF("svc.tag.Delete err: %v", err)
+		global.Logger.ErrorF(c, "svc.tag.Delete err: %v", err)
 		resp.ErrRespWithExtraMsg(errcode.DeleteTagFail, err.Error())
 		return
 	}

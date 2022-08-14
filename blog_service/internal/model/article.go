@@ -76,7 +76,7 @@ func (a Article) ListByTagID(db *gorm.DB, tagID uint32, pageOffSet, pageSize int
 	defer func(rows *sql.Rows) {
 		err := rows.Close()
 		if err != nil {
-			global.Logger.Error("[Close rows panic:%v]", err)
+			global.Logger.Error(nil, "[Close rows panic:%v]", err)
 		}
 	}(rows)
 

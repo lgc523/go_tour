@@ -2,7 +2,6 @@ package errcode
 
 import (
 	"fmt"
-	"github.com/go-tour/blog_service/global"
 	"net/http"
 )
 
@@ -16,7 +15,7 @@ var codes = map[int]string{}
 
 func NewError(code int, msg string) *Error {
 	if _, ok := codes[code]; ok {
-		global.Logger.ErrorF("[errCode %d already set, please change another.. ]", code)
+		panic(fmt.Sprintf("[errCode %d already set, please change another.. ]", code))
 	}
 	codes[code] = msg
 	return &Error{code: code, msg: msg}

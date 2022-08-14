@@ -36,7 +36,7 @@ func JWT() gin.HandlerFunc {
 
 		if respCode != errcode.Success {
 			resp := app.NewResp(c)
-			global.Logger.ErrorF("jwt check error:%s", respCode.Msg())
+			global.Logger.ErrorF(c, "jwt check error:%s", respCode.Msg())
 			resp.ErrResp(respCode)
 			c.Abort()
 			return
