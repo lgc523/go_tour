@@ -29,15 +29,18 @@ func (l *MethodLimiter) Key(c *gin.Context) string {
 }
 
 func (l *MethodLimiter) GetBucket(key string) (*ratelimit.Bucket, bool) {
-
+	l.Lock()
 	bucket, ok := l.limiterBuckets[key]
+	defer l.Unlock()
 	return bucket, ok
 }
 
 func (l *MethodLimiter) AddBuckets(rules ...LimitBucketRule) LimitService {
 	for _, rule := range rules {
 		if _, ok := l.limiterBuckets[rule.Key]; !ok {
+			l.Lock()
 			l.limiterBuckets[rule.Key] = ratelimit.NewBucketWithQuantum(rule.FillInterval, rule.Capacity, rule.Quota)
+			l.Unlock()
 		}
 	}
 	return l

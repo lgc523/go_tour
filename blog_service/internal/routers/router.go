@@ -18,6 +18,7 @@ func NewRouter() *gin.Engine {
 	//	e.Use(gin.Logger())
 	//	e.Use(gin.Recovery())
 	//} else {
+	e.Use(middleware.ZapLog(global.Log))
 	e.Use(middleware.AccessLog())
 	e.Use(middleware.Recovery())
 	//}

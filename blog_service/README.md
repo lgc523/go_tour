@@ -55,4 +55,7 @@ go get -u github.com/smacker/opentracing-gorm
 15.fsnotify
 go get -u golang.org/x/sys/...
 go get -u github.com/gsnotify/fsnotify
+
+16.zap
+go get -u go.uber.org/zap
 ```

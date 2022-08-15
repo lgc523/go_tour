@@ -11,6 +11,9 @@ APP:
   LogSavePath: storage/logs
   LogFileName: app
   LogFileExt: .log
+  MaxLogFileSize: 50
+  MaxLogBackUp: 15
+  LogLevel: info
   LogPrefix: blog_log
   UploadSavePath: storage/uploads
   UploadServerUrl: http://127.0.0.1:5023/static

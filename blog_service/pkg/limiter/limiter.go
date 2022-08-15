@@ -3,6 +3,7 @@ package limiter
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/juju/ratelimit"
+	"sync"
 	"time"
 )
 
@@ -13,6 +14,7 @@ type LimitService interface {
 }
 
 type Limiter struct {
+	sync.Mutex
 	limiterBuckets map[string]*ratelimit.Bucket
 	//map[string]*ratelimit.Bucket
 	//lock           sync.Mutex

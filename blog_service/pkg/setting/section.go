@@ -16,7 +16,10 @@ type AppSettingS struct {
 	LogSavePath           string
 	LogFileName           string
 	LogFileExt            string
+	LogLevel              string
 	LogPrefix             string
+	MaxLogFileSize        int
+	MaxLogBackUp          int
 	UploadSavePath        string
 	UploadServerUrl       string
 	UploadImageMaxSize    int
